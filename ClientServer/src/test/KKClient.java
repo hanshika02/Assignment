@@ -15,19 +15,20 @@ public class KKClient {
 	 
     public static void main(String[] args) throws IOException {
         
-       /* if (args.length != 2) {
+        if (args.length != 2) {
             System.err.println(
-                "Usage: java EchoClient <host name> <port number>");
+                "Usage: java KKClient <host name> <port number>");
             System.exit(1);
         }
-*/
-        //String hostName = args[0];
-        String hostName="192.168.2.77";
-        //int portNumber = Integer.parseInt(args[1]);
-        int portNumber=10020;
-        String filer="Recieved.txt";
         
-
+        String hostName = args[0];
+        //String hostName="zemoso05-Vostro-3546";
+        int portNumber = Integer.parseInt(args[1]);
+        //int portNumber=10020;
+        String filer="Recieved.txt";
+        //String filer=null;
+        String clientName=null;
+        KKProtocol kkp = new KKProtocol();
         try (
             Socket kkSocket = new Socket(hostName, portNumber);
             PrintWriter out = new PrintWriter(kkSocket.getOutputStream(), true);
@@ -42,7 +43,11 @@ public class KKClient {
 
             while ((fromServer = in.readLine()) != null) {
                 System.out.println("Server: " + fromServer);
+                if(fromServer.contains("Hello")) {clientName=kkp.getName(fromServer).toString();}
+                //filer= clientName +".txt";
+                
                 if(fromServer.equals("ACK")){
+                	System.out.println("Welcome "+clientName+" Aboard!!");
                 	System.out.println("Recieving files....");
                 	int filesize=1022386; 
                 	int bytesRead; 
@@ -69,6 +74,7 @@ public class KKClient {
                 }
                 if (fromServer.equals("TERMINATED"))
                 	{
+                		System.out.println("Bad Input or no response. Terminating!!");
                     	kkSocket.close();
                 		break;
                 	}

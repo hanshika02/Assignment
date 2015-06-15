@@ -1,20 +1,30 @@
 package test;
 
-import java.net.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.concurrent.TimeUnit;
-import java.io.*;
 
 public class KKServer {
     public static void main(String[] args) throws IOException {
         
-      /*  if (args.length != 1) {
-            System.err.println("Usage: java KnockKnockServer <port number>");
+        if (args.length != 1) {
+            System.err.println("Usage: java KKServer <port number>");
             System.exit(1);
-        }*/
+        }
 
-        //int portNumber = Integer.parseInt(args[0]);
-        int portNumber=10020;
-        String file = "/home/zemoso05/Training/ClientServer/file.txt"; 
+        int portNumber = Integer.parseInt(args[0]);
+        //int portNumber=10020;
+        
+        String file = "/home/zemoso05/Training/ClientServer/file.txt";
+        
         try ( 
             ServerSocket serverSocket = new ServerSocket(portNumber);
             Socket clientSocket = serverSocket.accept();
@@ -39,11 +49,11 @@ public class KKServer {
                 {
                 	File transferFile = new File (file); 
                 	byte [] bytearray = new byte [(int)transferFile.length()]; 
-                	FileInputStream fin = new FileInputStream(transferFile); 
-                	BufferedInputStream bin = new BufferedInputStream(fin); 
+                	BufferedInputStream bin = new BufferedInputStream(new FileInputStream(transferFile)); 
                 	bin.read(bytearray,0,bytearray.length); 
-                	OutputStream os = clientSocket.getOutputStream(); 
-                	System.out.println("Sending Files..."); 
+                	OutputStream os = clientSocket.getOutputStream();
+                	String name=kkp.getName(inputLine);
+                	System.out.println("Sending Files...to "+name); 
                 	os.write(bytearray,0,bytearray.length); 
                 	TimeUnit.MILLISECONDS.sleep(2000);
                 	System.out.println("File transfer completed!");

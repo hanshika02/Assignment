@@ -16,13 +16,13 @@ public class KKProtocol {
 	            state = INITIATE;
 	        } 
 	        else if (state == INITIATE) {
-	            if (theInput.contains("hello")) {
+	            if (theInput.contains("Hello")||theInput.contains("hello")) {
 	                theOutput = "ACK";
 	                state = SENTACK;
 	            } 
 	            else
 	            {
-	            	theOutput="Bad Input or no response. Temrinating";
+	            	theOutput="TERMINATED";
 	            	state=TERMINATE;
 	            }
 	        } 
@@ -35,5 +35,11 @@ public class KKProtocol {
 	        }
 	        
 	        return theOutput;
+	    }
+	    
+	    public String getName(String theInput){
+	    	String op=null;
+	    	op=theInput.substring(14, theInput.length());
+	    	return op;
 	    }
 	}
