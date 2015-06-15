@@ -1,0 +1,66 @@
+package test;
+
+import java.net.*;
+import java.util.concurrent.TimeUnit;
+import java.io.*;
+
+public class KKServer {
+    public static void main(String[] args) throws IOException {
+        
+      /*  if (args.length != 1) {
+            System.err.println("Usage: java KnockKnockServer <port number>");
+            System.exit(1);
+        }*/
+
+        //int portNumber = Integer.parseInt(args[0]);
+        int portNumber=10020;
+        String file = "/home/zemoso05/Training/ClientServer/file.txt"; 
+        try ( 
+            ServerSocket serverSocket = new ServerSocket(portNumber);
+            Socket clientSocket = serverSocket.accept();
+            PrintWriter out =
+                new PrintWriter(clientSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(
+                new InputStreamReader(clientSocket.getInputStream()));
+        ) {
+        
+            String inputLine, outputLine;
+            
+            // Initiate conversation with client
+            System.out.println("Accepted connection :\n " + clientSocket+"\n"); 
+            KKProtocol kkp = new KKProtocol();
+            outputLine = kkp.processInput(null);
+            out.println(outputLine);
+
+            while ((inputLine = in.readLine()) != null) {
+                outputLine = kkp.processInput(inputLine);
+                out.println(outputLine);
+                if(outputLine.equalsIgnoreCase("ACK"))
+                {
+                	File transferFile = new File (file); 
+                	byte [] bytearray = new byte [(int)transferFile.length()]; 
+                	FileInputStream fin = new FileInputStream(transferFile); 
+                	BufferedInputStream bin = new BufferedInputStream(fin); 
+                	bin.read(bytearray,0,bytearray.length); 
+                	OutputStream os = clientSocket.getOutputStream(); 
+                	System.out.println("Sending Files..."); 
+                	os.write(bytearray,0,bytearray.length); 
+                	TimeUnit.MILLISECONDS.sleep(2000);
+                	System.out.println("File transfer completed!");
+                	os.flush(); 
+                	bin.close();
+                	clientSocket.close(); 
+                    break;
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println("Exception caught when trying to listen on port "
+                + portNumber + " or listening for a connection");
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+}
