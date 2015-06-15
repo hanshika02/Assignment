@@ -14,10 +14,10 @@ public static void main(String[] args){
 	try {
 		br=new BufferedReader(new FileReader(args[0]));
 		brw=new BufferedWriter(new FileWriter(args[1]));
-		char[] cbuf=new char[1024];
+		char[] buf=new char[1024];
 		int bytesRead;
 		while((bytesRead=br.read())>0){
-			brw.write(cbuf, 0, bytesRead);
+			brw.write(buf, 0, bytesRead);
 		}
 	} catch (FileNotFoundException e) {
 		System.out.println("File not found!");
