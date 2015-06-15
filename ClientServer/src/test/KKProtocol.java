@@ -38,8 +38,6 @@ public class KKProtocol {
 	    }
 	    
 	    public String getName(String theInput){
-	    	String op=null;
-	    	op=theInput.substring(14, theInput.length());
-	    	return op;
+	    	return (theInput.substring(14, theInput.length()));
 	    }
 	}
