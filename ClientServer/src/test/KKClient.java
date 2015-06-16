@@ -24,9 +24,9 @@ public class KKClient {
         //String hostName="zemoso05-Vostro-3546";
         int portNumber = Integer.parseInt(args[1]);
         //int portNumber=10020;
-        String filer="Recieved.txt";
-        //String filer=null;
+       // String filer="Recieved.txt";
         String clientName=null;
+        String filer=null;
         KKProtocol kkp = new KKProtocol();
         try (
             Socket kkSocket = new Socket(hostName, portNumber);
@@ -39,12 +39,9 @@ public class KKClient {
                 new BufferedReader(new InputStreamReader(System.in));
             String fromServer;
             String fromUser;
-
+            //fromUser = stdIn.readLine();
             while ((fromServer = in.readLine()) != null) {
                 System.out.println("Server: " + fromServer);
-                if(fromServer.contains("Hello")) {clientName=kkp.getName(fromServer).toString();}
-                //filer= clientName +".txt";
-                
                 if(fromServer.equals("ACK")){
                 	System.out.println("Welcome "+clientName+" Aboard!!");
                 	System.out.println("Recieving files....");
@@ -76,8 +73,11 @@ public class KKClient {
                     	kkSocket.close();
                 		break;
                 	}
-                
                 fromUser = stdIn.readLine();
+                if(fromUser.contains("Hello")||fromUser.contains("hello")) {
+                	clientName=kkp.getName(fromUser).toString();
+                	filer=clientName+".txt";
+                }
                 if (fromUser != null) {
                     System.out.println("Client: " + fromUser);
                     out.println(fromUser);
