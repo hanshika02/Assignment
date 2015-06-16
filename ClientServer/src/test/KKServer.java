@@ -10,7 +10,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.TimeUnit;
 
 public class KKServer {
     public static void main(String[] args) throws IOException {
@@ -55,7 +54,6 @@ public class KKServer {
                 	String name=kkp.getName(inputLine);
                 	System.out.println("Sending Files...to "+name); 
                 	os.write(bytearray,0,bytearray.length); 
-                	TimeUnit.MILLISECONDS.sleep(2000);
                 	System.out.println("File transfer completed!");
                 	os.flush(); 
                 	bin.close();
@@ -68,9 +66,6 @@ public class KKServer {
             System.out.println("Exception caught when trying to listen on port "
                 + portNumber + " or listening for a connection");
             System.out.println(e.getMessage());
-        } catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        } 
     }
 }

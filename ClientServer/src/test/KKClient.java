@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.concurrent.TimeUnit;
 
 public class KKClient {
 	 
@@ -67,7 +66,6 @@ public class KKClient {
                 	bos.flush(); 
                 	bos.close(); 
                 	kkSocket.close();
-                    TimeUnit.MILLISECONDS.sleep(2000);
                     System.out.println("File " + filer
                         + " downloaded (" + currentTot + " bytes read)");
                     break;
@@ -92,9 +90,6 @@ public class KKClient {
             System.err.println("Couldn't get I/O for the connection to " +
                 hostName);
             System.exit(1);
-        } catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        }
     }
 }
