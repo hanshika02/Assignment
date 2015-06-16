@@ -46,10 +46,11 @@ public class KKServer {
                 out.println(outputLine);
                 if(outputLine.equalsIgnoreCase("ACK"))
                 {
-                	File transferFile = new File (file); 
-                	byte [] bytearray = new byte [(int)transferFile.length()]; 
-                	BufferedInputStream bin = new BufferedInputStream(new FileInputStream(transferFile)); 
-                	bin.read(bytearray,0,bytearray.length); 
+                	File transferFile = new File (file);  
+                	BufferedInputStream bin = new BufferedInputStream(new FileInputStream(transferFile));
+                	byte [] bytearray = new byte [(int)transferFile.length()];
+                	int v=bin.read(bytearray,0,bytearray.length); 
+                	System.out.println(v);
                 	OutputStream os = clientSocket.getOutputStream();
                 	String name=kkp.getName(inputLine);
                 	System.out.println("Sending Files...to "+name); 

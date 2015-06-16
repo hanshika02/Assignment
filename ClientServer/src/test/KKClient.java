@@ -24,7 +24,6 @@ public class KKClient {
         //String hostName="zemoso05-Vostro-3546";
         int portNumber = Integer.parseInt(args[1]);
         //int portNumber=10020;
-       // String filer="Recieved.txt";
         String clientName=null;
         String filer=null;
         KKProtocol kkp = new KKProtocol();
@@ -52,14 +51,10 @@ public class KKClient {
                 	InputStream is = kkSocket.getInputStream(); 
                 	FileOutputStream fos = new FileOutputStream(filer); 
                 	BufferedOutputStream bos = new BufferedOutputStream(fos); 
-                	bytesRead = is.read(bytearray,0,bytearray.length); 
-                	currentTot = bytesRead; 
-                	do { 
-                		bytesRead = is.read(bytearray, currentTot, (bytearray.length-currentTot)); 
-                		if(bytesRead >= 0) 
-                			currentTot += bytesRead; 
-                		} while(bytesRead > -1); 
-                	bos.write(bytearray, 0 , currentTot); 
+                	while((bytesRead=is.read(bytearray))>=0){
+            			bos.write(bytearray, 0, bytesRead);
+            			currentTot+=bytesRead;
+            		}
                 	bos.flush(); 
                 	bos.close(); 
                 	kkSocket.close();
