@@ -30,11 +30,13 @@ public class App {
 		
 		
 		// For input type ('A','F'), an invalid case
-		ZNumber z3 = new ZNumber('A','H','C','G');
+		char c1[]={'A','H','C','G'};
+		ZNumber z3 = new ZNumber(c1);
 		System.out.println(z3.toString()+"\n\n");
 		
 		// For input type ('A','F'), a valid case
-		ZNumber z4 = new ZNumber('A','B');
+		char[] c2={'A','B'};
+		ZNumber z4 = new ZNumber(c2);
 		System.out.println(z4.toString()+"\n\n");
 		
 		

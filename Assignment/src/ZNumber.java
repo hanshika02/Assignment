@@ -13,6 +13,8 @@ public class ZNumber {
 	// for parameters send in as arraylist
 	// for type: ZNumber zn = new ZNumber(['A','B'])
 	public ZNumber(ArrayList<Character> z) {
+		Character[] c = z.toArray(new Character[z.size()]);
+		//this(c);
 		int n=z.size();
 		for(int i=0;i<n;i++)
 		{
@@ -31,7 +33,7 @@ public class ZNumber {
 	
 	
 	// for parameters send in as chars eg: ZNumber zn = new ZNumber('A','B','C','D');
-	public ZNumber(char... c) {
+	public ZNumber(char[] c) {
 		int l=c.length;
 		for(int i=0;i<l;i++)
 		{
@@ -51,6 +53,7 @@ public class ZNumber {
 	
 	// for parameters send in as string eg: ZNumber zn = new ZNumber("ABCD");
 	public ZNumber(String s){
+		//char[] c=s.toCharArray();
 		int l=s.length();
 		for(int i=0;i<l;i++)
 		{
@@ -64,6 +67,7 @@ public class ZNumber {
 				zn=null; break;
 			}
 		}
+		//this(c);
 		if(zn!=null) System.out.println(zn);
 	}
 	
