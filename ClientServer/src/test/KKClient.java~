@@ -23,7 +23,7 @@ public class KKClient {
         String hostName = args[0];
         //String hostName="zemoso05-Vostro-3546";
         int portNumber = Integer.parseInt(args[1]);
-        //Int portNumber=10020;
+        //int portNumber=10020;
         String clientName=null;
         String filer=null;
         KKProtocol kkp = new KKProtocol();

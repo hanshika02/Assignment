@@ -20,7 +20,7 @@ public class KKServer {
         }
 
         int portNumber = Integer.parseInt(args[0]);
-        //Int portNumber=10020;
+        //int portNumber=10020;
         
         String file = "/home/zemoso05/Training/ClientServer/file.txt";
         
