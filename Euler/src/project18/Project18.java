@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Project18 {
 	
 	public static void main(String[] args) {
-		 int C[][]=new int[101][101];
+		 int A[][]=new int[101][101];
 		 File file=new File("triangle.txt");
 		 try {
 			BufferedReader br=new BufferedReader(new FileReader(file));
@@ -22,14 +22,14 @@ public class Project18 {
 				Scanner in = new Scanner(l[i]).useDelimiter("[^0-9]+");
 				j=0;
 				while(in.hasNextInt()){
-					C[i][j]=in.nextInt();
+					A[i][j]=in.nextInt();
 					j++;
 				}
 			    i++;
 			}
 			System.out.println();
 			System.out.println("For third large matrix:");
-			run(C);
+			run(A);
 			br.close();
 			
 		} catch (FileNotFoundException e) {
