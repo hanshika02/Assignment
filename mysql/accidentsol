@@ -1,0 +1,158 @@
+mysql> select StateUts,y2006 from accidents order by y2006 desc limit 0,4;
++----------------+-------+
+| StateUts       | y2006 |
++----------------+-------+
+| All India      | 28373 |
+| Andhra Pradesh |  3824 |
+| Madhya Pradesh |  3569 |
+| Karnataka      |  3496 |
++----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select StateUts,y2007 from accidents order by y2007 desc limit 0,4;
++----------------+-------+
+| StateUts       | y2007 |
++----------------+-------+
+| All India      | 26046 |
+| Madhya Pradesh |  6985 |
+| Maharashtra    |  3767 |
+| Uttar Pradesh  |  2850 |
++----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select StateUts,y2008 from accidents order by y2008 desc limit 0,4;
++---------------+-------+
+| StateUts      | y2008 |
++---------------+-------+
+| All India     | 20150 |
+| Uttar Pradesh |  4155 |
+| Maharashtra   |  2169 |
+| Bihar         |  1944 |
++---------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select StateUts,y2009 from accidents order by y2009 desc limit 0,4;
++----------------+-------+
+| StateUts       | y2009 |
++----------------+-------+
+| All India      | 27152 |
+| Madhya Pradesh |  4480 |
+| Andhra Pradesh |  4469 |
+| Uttar Pradesh  |  4404 |
++----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select StateUts,y2010 from accidents order by y2010 desc limit 0,4;
++----------------+-------+
+| StateUts       | y2010 |
++----------------+-------+
+| All India      | 31000 |
+| West Bengal    |  8663 |
+| Madhya Pradesh |  4082 |
+| Andhra Pradesh |  2877 |
++----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select StateUts,y2011 from accidents order by y2011 desc limit 0,4;
++----------------+-------+
+| StateUts       | y2011 |
++----------------+-------+
+| All India      | 24655 |
+| Uttar Pradesh  |  4706 |
+| Madhya Pradesh |  4028 |
+| Tamil Nadu     |  3096 |
++----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select StateUts,y2012 from accidents order by y2012 desc limit 0,4;
++----------------+-------+
+| StateUts       | y2012 |
++----------------+-------+
+| All India      | 23979 |
+| Madhya Pradesh |  5374 |
+| Uttar Pradesh  |  4558 |
+| Tamil Nadu     |  3096 |
++----------------+-------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+mysql> ( select * from accidents order by y2006 desc limit 0,4) UNION ALL (select * from accidents order by y2007 desc limit 0,4) UNION ALL (select * from accidents order by y2008 desc limit 0,4) UNION ALL (select * from accidents order by y2009 desc limit 0,4) UNION ALL (select * from accidents order by y2010 desc limit 0,4) UNION ALL (select * from accidents order by y2011 desc limit 0,4) UNION ALL (select * from accidents order by y2012 desc limit 0,4);
++----------------+-------+-------+-------+-------+-------+-------+-------+
+| StateUts       | y2006 | y2007 | y2008 | y2009 | y2010 | y2011 | y2012 |
++----------------+-------+-------+-------+-------+-------+-------+-------+
+| All India      | 28373 | 26046 | 20150 | 27152 | 31000 | 24655 | 23979 |
+| Andhra Pradesh |  3824 |  2432 |  1591 |  4469 |  2877 |  2205 |  1660 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Karnataka      |  3496 |   203 |   513 |   967 |   299 |   541 |   577 |
+| All India      | 28373 | 26046 | 20150 | 27152 | 31000 | 24655 | 23979 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Maharashtra    |  3216 |  3767 |  2169 |  1868 |  2407 |  2452 |  2350 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| All India      | 28373 | 26046 | 20150 | 27152 | 31000 | 24655 | 23979 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| Maharashtra    |  3216 |  3767 |  2169 |  1868 |  2407 |  2452 |  2350 |
+| Bihar          |  1665 |  1949 |  1944 |  1011 |   930 |  1590 |  1572 |
+| All India      | 28373 | 26046 | 20150 | 27152 | 31000 | 24655 | 23979 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Andhra Pradesh |  3824 |  2432 |  1591 |  4469 |  2877 |  2205 |  1660 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| All India      | 28373 | 26046 | 20150 | 27152 | 31000 | 24655 | 23979 |
+| West Bengal    |   257 |   971 |  1555 |  1894 |  8663 |     0 |     0 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Andhra Pradesh |  3824 |  2432 |  1591 |  4469 |  2877 |  2205 |  1660 |
+| All India      | 28373 | 26046 | 20150 | 27152 | 31000 | 24655 | 23979 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Tamil Nadu     |   462 |   346 |   363 |  2208 |  2439 |  3096 |  3096 |
+| All India      | 28373 | 26046 | 20150 | 27152 | 31000 | 24655 | 23979 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| Tamil Nadu     |   462 |   346 |   363 |  2208 |  2439 |  3096 |  3096 |
++----------------+-------+-------+-------+-------+-------+-------+-------+
+28 rows in set (0.00 sec)
+
+
+
+
+mysql> ( select * from accidents  where not StateUts="All India" order by y2006 desc limit 0,3) UNION ALL (select * from accidents  where not StateUts="All India" order by y2007 desc limit 0,3) UNION ALL (select * from accidents  where not StateUts="All India" order by y2008 desc limit 0,3) UNION ALL (select * from accidents  where not StateUts="All India" order by y2009 desc limit 0,3) UNION ALL (select * from accidents  where not StateUts="All India" order by y2010 desc limit 0,3) UNION ALL (select * from accidents  where not StateUts="All India" order by y2011 desc limit 0,3) UNION ALL (select * from accidents  where not StateUts="All India"  order by y2012 desc limit 0,3);
++----------------+-------+-------+-------+-------+-------+-------+-------+
+| StateUts       | y2006 | y2007 | y2008 | y2009 | y2010 | y2011 | y2012 |
++----------------+-------+-------+-------+-------+-------+-------+-------+
+| Andhra Pradesh |  3824 |  2432 |  1591 |  4469 |  2877 |  2205 |  1660 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Karnataka      |  3496 |   203 |   513 |   967 |   299 |   541 |   577 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Maharashtra    |  3216 |  3767 |  2169 |  1868 |  2407 |  2452 |  2350 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| Maharashtra    |  3216 |  3767 |  2169 |  1868 |  2407 |  2452 |  2350 |
+| Bihar          |  1665 |  1949 |  1944 |  1011 |   930 |  1590 |  1572 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Andhra Pradesh |  3824 |  2432 |  1591 |  4469 |  2877 |  2205 |  1660 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| West Bengal    |   257 |   971 |  1555 |  1894 |  8663 |     0 |     0 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Andhra Pradesh |  3824 |  2432 |  1591 |  4469 |  2877 |  2205 |  1660 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Tamil Nadu     |   462 |   346 |   363 |  2208 |  2439 |  3096 |  3096 |
+| Madhya Pradesh |  3569 |  6985 |  1899 |  4480 |  4082 |  4028 |  5374 |
+| Uttar Pradesh  |  2983 |  2850 |  4155 |  4404 |  2305 |  4706 |  4558 |
+| Tamil Nadu     |   462 |   346 |   363 |  2208 |  2439 |  3096 |  3096 |
++----------------+-------+-------+-------+-------+-------+-------+-------+
+21 rows in set (0.00 sec)
+
+
+
+
+

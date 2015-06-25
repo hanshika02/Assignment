@@ -1,0 +1,93 @@
+mysql> SELECT p.Stateut,(a.y2011/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3; 
++----------------+---------------------+
+| Stateut        | (a.y2011/p.Pop2011) |
++----------------+---------------------+
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0000 |
+| Odisha         |              0.0000 |
++----------------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT p.Stateut,(a.y2010/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3;  
++----------------+---------------------+
+| Stateut        | (a.y2010/p.Pop2011) |
++----------------+---------------------+
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0001 |
+| Odisha         |              0.0000 |
++----------------+---------------------+
+3 rows in set (0.01 sec)
+
+mysql> SELECT p.Stateut,(a.y2009/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3;  
++----------------+---------------------+
+| Stateut        | (a.y2009/p.Pop2011) |
++----------------+---------------------+
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0001 |
+| Odisha         |              0.0000 |
++----------------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT p.Stateut,(a.y2008/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3;  
++----------------+---------------------+
+| Stateut        | (a.y2008/p.Pop2011) |
++----------------+---------------------+
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0000 |
+| Odisha         |              0.0000 |
++----------------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT p.Stateut,(a.y2007/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3;  
++----------------+---------------------+
+| Stateut        | (a.y2007/p.Pop2011) |
++----------------+---------------------+
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0000 |
+| Odisha         |              0.0000 |
++----------------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT p.Stateut,(a.y2006/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3;  
++----------------+---------------------+
+| Stateut        | (a.y2006/p.Pop2011) |
++----------------+---------------------+
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0001 |
+| Odisha         |              0.0000 |
++----------------+---------------------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+mysql> (SELECT p.Stateut,(a.y2006/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3) UNION ALL (SELECT p.Stateut,(a.y2007/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3) UNION ALL (SELECT p.Stateut,(a.y2008/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3) UNION ALL (SELECT p.Stateut,(a.y2009/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3) UNION ALL (SELECT p.Stateut,(a.y2010/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3) UNION ALL (SELECT p.Stateut,(a.y2011/p.Pop2011) FROM population p JOIN accidents a ON (a.StateUts=p.Stateut) WHERE p.Stateut<>'All India' LIMIT 0,3);
++----------------+---------------------+
+| Stateut        | (a.y2006/p.Pop2011) |
++----------------+---------------------+
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0001 |
+| Odisha         |              0.0000 |
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0000 |
+| Odisha         |              0.0000 |
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0000 |
+| Odisha         |              0.0000 |
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0001 |
+| Odisha         |              0.0000 |
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0001 |
+| Odisha         |              0.0000 |
+| Uttar Pradesh  |              0.0000 |
+| Andhra Pradesh |              0.0000 |
+| Odisha         |              0.0000 |
++----------------+---------------------+
+18 rows in set (0.00 sec)
+

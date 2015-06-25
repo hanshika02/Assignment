@@ -1,0 +1,73 @@
+mysql> SELECT a.StateUts,ABS(a.y2010/v.y2010) FROM accidents a JOIN vehicle_counts v ON (v.StateUts=a.StateUts) ORDER BY ABS(a.y2010/v.y2010) DESC LIMIT 0,5; 
++----------------+----------------------+
+| StateUts       | ABS(a.y2010/v.y2010) |
++----------------+----------------------+
+| West Bengal    |             279.4516 |
+| Madhya Pradesh |              43.8925 |
+| Bihar          |              38.7500 |
+| Uttar Pradesh  |              37.7869 |
+| Andhra Pradesh |              27.1415 |
++----------------+----------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT a.StateUts,ABS(a.y2011/v.y2011) FROM accidents a JOIN vehicle_counts v ON (v.StateUts=a.StateUts) ORDER BY ABS(a.y2011/v.y2011) DESC LIMIT 0,5; 
++----------------+----------------------+
+| StateUts       | ABS(a.y2011/v.y2011) |
++----------------+----------------------+
+| Uttar Pradesh  |              70.2388 |
+| Bihar          |              61.1538 |
+| Madhya Pradesh |              39.8812 |
+| Andhra Pradesh |              18.3750 |
+| Maharashtra    |              15.8194 |
++----------------+----------------------+
+5 rows in set (0.00 sec)
+
+
+
+
+mysql> (SELECT a.StateUts,ABS(a.y2010/v.y2010),ABS(a.y2011/v.y2011) FROM accidents a JOIN vehicle_counts v ON (v.StateUts=a.StateUts) ORDER BY ABS(a.y2010/v.y2010) DESC LIMIT 0,5) UNION ALL (SELECT a.StateUts,ABS(a.y2010/v.y2010),ABS(a.y2011/v.y2011) FROM accidents a JOIN vehicle_counts v ON (v.StateUts=a.StateUts) ORDER BY ABS(a.y2011/v.y2011) DESC LIMIT 0,5); 
++----------------+----------------------+----------------------+
+| StateUts       | ABS(a.y2010/v.y2010) | ABS(a.y2011/v.y2011) |
++----------------+----------------------+----------------------+
+| West Bengal    |             279.4516 |               0.0000 |
+| Madhya Pradesh |              43.8925 |              39.8812 |
+| Bihar          |              38.7500 |              61.1538 |
+| Uttar Pradesh  |              37.7869 |              70.2388 |
+| Andhra Pradesh |              27.1415 |              18.3750 |
+| Uttar Pradesh  |              37.7869 |              70.2388 |
+| Bihar          |              38.7500 |              61.1538 |
+| Madhya Pradesh |              43.8925 |              39.8812 |
+| Andhra Pradesh |              27.1415 |              18.3750 |
+| Maharashtra    |              16.9507 |              15.8194 |
++----------------+----------------------+----------------------+
+10 rows in set (0.00 sec)
+
+
+
+
+
+
+
+mysql> (SELECT a.StateUts,ABS(a.y2010/v.y2010),ABS(a.y2011/v.y2011) FROM accidents a JOIN vehicle_counts v ON (v.StateUts=a.StateUts) ORDER BY ABS(a.y2010/v.y2010) DESC LIMIT 0,5); (SELECT a.StateUts,ABS(a.y2010/v.y2010),ABS(a.y2011/v.y2011) FROM accidents a JOIN vehicle_counts v ON (v.StateUts=a.StateUts) ORDER BY ABS(a.y2011/v.y2011) DESC LIMIT 0,5); 
++----------------+----------------------+----------------------+
+| StateUts       | ABS(a.y2010/v.y2010) | ABS(a.y2011/v.y2011) |
++----------------+----------------------+----------------------+
+| West Bengal    |             279.4516 |               0.0000 |
+| Madhya Pradesh |              43.8925 |              39.8812 |
+| Bihar          |              38.7500 |              61.1538 |
+| Uttar Pradesh  |              37.7869 |              70.2388 |
+| Andhra Pradesh |              27.1415 |              18.3750 |
++----------------+----------------------+----------------------+
+5 rows in set (0.00 sec)
+
++----------------+----------------------+----------------------+
+| StateUts       | ABS(a.y2010/v.y2010) | ABS(a.y2011/v.y2011) |
++----------------+----------------------+----------------------+
+| Uttar Pradesh  |              37.7869 |              70.2388 |
+| Bihar          |              38.7500 |              61.1538 |
+| Madhya Pradesh |              43.8925 |              39.8812 |
+| Andhra Pradesh |              27.1415 |              18.3750 |
+| Maharashtra    |              16.9507 |              15.8194 |
++----------------+----------------------+----------------------+
+5 rows in set (0.00 sec)
+
