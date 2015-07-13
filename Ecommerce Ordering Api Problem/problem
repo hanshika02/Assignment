@@ -1,0 +1,17 @@
+Make a ecommerce api for ordering
+
+Given components
+1. DB with Tables - Product, Order, User, 
+	Fill in some values of products and users
+	Product : uid, name, category, seller, cost.
+	Order: Order uid, productId(Product for which the order is placed), userId(Who placed the order), Expected Date of delivery, Method of payment, Address delivered to, contactInfo
+	User: First Name, Last Name, Contact Info, Address, gender, Age
+
+2. I will just input the productID and the userId in the input parameters and i should be returned with the expected date of delivery, orderId and mode of payment.
+	Check for invalid userId, productId entered by the user.
+
+3. I should get a warning if i have already placed an order for the same product and should ask me to confirm if i want to place order again or chose another product for ordering.
+
+4. Do this using interfaces 
+
+Use separate classes for Product, Order and User 
