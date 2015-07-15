@@ -5,13 +5,8 @@ public class Building{
 	private String buildingName;
 	private int sqft; // fixed sqft floor space
 	private int nf;	//no. of floors
-	private Floor[] floor =new Floor[nf];
+	private Floor[] floor;
 	
-	
-	public void setNf(int nf) {
-		this.nf = nf;
-	}
-
 	public void setBuildingName(String buildingName) {
 		this.buildingName = buildingName;
 	}
@@ -20,7 +15,7 @@ public class Building{
 		this.sqft = sqft;
 	}
 	
-	public void setFloorFilled(int f,int n){
+	public void setFloorFilled(int f,boolean n){
 		floor[f-1].setFilled(n);
 	}
 	
@@ -29,11 +24,14 @@ public class Building{
 	}
 
 	
-	public Building(String name){
+	public Building(String name,int nf){
 		this.buildingName=name;
+		this.nf=nf;
+		floor=new Floor[nf];
 	}
 	
-	public Building(){
+	public Building(String name){
+		this.buildingName=name;
 	}
 	
 	public String getBuildingName() {
@@ -54,7 +52,7 @@ public class Building{
 		}
 	}
 	
-	public int isFloorFilled(int n){
+	public boolean isFloorFilled(int n){
 		return floor[n-1].isFilled();
 	}
 	

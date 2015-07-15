@@ -2,7 +2,7 @@ package test;
 
 public class Floor {
 
-	private int isFilled;
+	private boolean isFilled;
 	private String tenantName;
 	private int floorNum;
 	
@@ -11,11 +11,11 @@ public class Floor {
 		this.floorNum=floorNum;
 	}
 	
-	public int isFilled() {
+	public boolean isFilled() {
 		return this.isFilled;
 	}
 	
-	public void setFilled(int isFilled) {
+	public void setFilled(boolean isFilled) {
 		this.isFilled = isFilled;
 	}
 	

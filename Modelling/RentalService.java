@@ -16,12 +16,12 @@ public class RentalService {
 	}
 	
 	public boolean rentFloor(int sqft,String buildingName,String tenant) throws RentalUnavailableException{
-		b=new Building(buildingName); // this can make database connection and retrieve all buildings data by its name
-		int nf=b.getNf();
+		int nf=1;
+		b=new Building(buildingName,nf); // this can make database connection and retrieve all buildings data by its name
 		if(sqft>b.getSqft()){
 			int s=0;
 			for(int i=1;i<=nf;i++){
-				if((b.isFloorFilled(i)==0) && (s>=sqft)){
+				if((!b.isFloorFilled(i)) && (s>=sqft)){
 					alot.add(i);
 					s+=b.getSqft();
 					this.alotted=true;
@@ -31,7 +31,7 @@ public class RentalService {
 		else
 		{
 			for(int i=1;i<=nf;i++){
-				if(b.isFloorFilled(i)==0){
+				if(!b.isFloorFilled(i)){
 					alot.add(i);
 					b.setTenantName(tenant, i);
 					this.alotted=true;
@@ -46,9 +46,9 @@ public class RentalService {
 	
 	public boolean vacateFloor(String tenant,String building,int floorNum){
 		b=new Building(building);
-		if(b.isFloorFilled(floorNum)==1){
+		if(b.isFloorFilled(floorNum)){
 			unalotted=true;
-			b.setFloorFilled(floorNum, 0);
+			b.setFloorFilled(floorNum, false);
 		}
 		return unalotted;
 	}
